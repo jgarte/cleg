@@ -17,6 +17,11 @@
 
 use CGI;
 
+## CONFIG
+
+my $Cleg_Url = "https://your_url.tld/cleg";
+
+
 my @Files;
 @Files = glob("markdowns/*.md");
 
@@ -26,7 +31,7 @@ print "Content-type: application/rss+xml\n\n";
 print "<rss xmlns:atom='http://www.w3.org/2005/Atom' version='2.0'>\n";
 print "<channel>
     <title>your blog</title>
-    <link>https://your url</link>
+    <link>$Cleg_Url</link>
     <description>blog</description>\n";
 
 foreach(@Files) {
@@ -40,7 +45,7 @@ foreach(@Files) {
     
     print "<title>".$Title."</title>\n";
     print "<author>you</author>";
-    print "<link>"."https:/yourwebsite/cleg/?article=$Link"."</link>\n";
+    print "<link>"."$Cleg_Url?article=$Link"."</link>\n";
     print "<description>".&GetDescription($_) . "</description>\n";
     print "</item>\n\n";
 }
