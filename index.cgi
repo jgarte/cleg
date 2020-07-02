@@ -43,15 +43,15 @@ my @Contents;
 opendir(DIRECTORY,"markdowns");
 
 while(readdir(DIRECTORY)) {
-
     push @Contents, $_;
-
 }
+
 closedir(DIRECTORY);
 
 @Contents = sort(@Contents);
 @Contents = reverse(@Contents);
-pop @Contents; pop @Contents;
+pop @Contents; pop @Contents; # There is . and .. in the array, and we
+			      # don't want it
 
 my $Date;
 
